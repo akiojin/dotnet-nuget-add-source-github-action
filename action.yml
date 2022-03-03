@@ -1,0 +1,26 @@
+name: '.NET NuGet add source GitHub action'
+description: '.NET NuGet add source GitHub action'
+inputs:
+  username:
+    description: ''
+    required: true
+    default: ''
+  password:
+    description: ''
+    required: true
+    default: ''
+  name:
+    description: ''
+    required: true
+    default: ''
+  source:
+    description: ''
+    required: true
+    default: ''
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
+  post: 'dist/index.js'
+branding:
+  icon: "upload-cloud"
+  color: "orange"

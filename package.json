@@ -1,0 +1,37 @@
+{
+  "name": "dotnet-nuget-add-source-github-action",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "dist/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cloud-creative-studios/dotnet-nuget-add-source-github-action.git"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "setup",
+    "dotnet"
+  ],
+  "author": "cloud-creative-studios",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cloud-creative-studios/dotnet-nuget-add-source-github-action/issues"
+  },
+  "homepage": "https://github.com/cloud-creative-studios/dotnet-nuget-add-source-github-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/exec": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21"
+  }
+}

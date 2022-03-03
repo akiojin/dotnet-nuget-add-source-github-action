@@ -1,0 +1,41 @@
+name: Distribute Test (ubuntu, macOS, Windows)
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request:
+    branches:
+      - develop
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  Test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Install dependencies
+        run: npm install
+
+      - uses: ./
+        with:
+          username: ${{ secrets.GIT_CREDENTIAL_USERNAME }}
+          password: ${{ secrets.GIT_CREDENTIAL_PACKAGE_PASSWORD }}
+          name: "GitHub Packages"
+          source: ${{ secrets.GIT_CREDENTIAL_PACKAGE_SOURCE }}
