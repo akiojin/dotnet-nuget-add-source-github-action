@@ -1,7 +1,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 604:
+/***/ 403:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -28,7 +28,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.issue = exports.issueCommand = void 0;
 const os = __importStar(__nccwpck_require__(37));
-const utils_1 = __nccwpck_require__(245);
+const utils_1 = __nccwpck_require__(163);
 /**
  * Commands
  *
@@ -100,7 +100,7 @@ function escapeProperty(s) {
 
 /***/ }),
 
-/***/ 127:
+/***/ 21:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -135,12 +135,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getIDToken = exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
-const command_1 = __nccwpck_require__(604);
-const file_command_1 = __nccwpck_require__(352);
-const utils_1 = __nccwpck_require__(245);
+const command_1 = __nccwpck_require__(403);
+const file_command_1 = __nccwpck_require__(704);
+const utils_1 = __nccwpck_require__(163);
 const os = __importStar(__nccwpck_require__(37));
 const path = __importStar(__nccwpck_require__(17));
-const oidc_utils_1 = __nccwpck_require__(457);
+const oidc_utils_1 = __nccwpck_require__(964);
 /**
  * The code to exit an action
  */
@@ -419,7 +419,7 @@ exports.getIDToken = getIDToken;
 
 /***/ }),
 
-/***/ 352:
+/***/ 704:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -450,7 +450,7 @@ exports.issueCommand = void 0;
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const fs = __importStar(__nccwpck_require__(147));
 const os = __importStar(__nccwpck_require__(37));
-const utils_1 = __nccwpck_require__(245);
+const utils_1 = __nccwpck_require__(163);
 function issueCommand(command, message) {
     const filePath = process.env[`GITHUB_${command}`];
     if (!filePath) {
@@ -468,7 +468,7 @@ exports.issueCommand = issueCommand;
 
 /***/ }),
 
-/***/ 457:
+/***/ 964:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -484,9 +484,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.OidcClient = void 0;
-const http_client_1 = __nccwpck_require__(840);
-const auth_1 = __nccwpck_require__(421);
-const core_1 = __nccwpck_require__(127);
+const http_client_1 = __nccwpck_require__(189);
+const auth_1 = __nccwpck_require__(560);
+const core_1 = __nccwpck_require__(21);
 class OidcClient {
     static createHttpClient(allowRetry = true, maxRetry = 10) {
         const requestOptions = {
@@ -552,7 +552,7 @@ exports.OidcClient = OidcClient;
 
 /***/ }),
 
-/***/ 245:
+/***/ 163:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -599,7 +599,7 @@ exports.toCommandProperties = toCommandProperties;
 
 /***/ }),
 
-/***/ 49:
+/***/ 272:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -635,7 +635,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getExecOutput = exports.exec = void 0;
 const string_decoder_1 = __nccwpck_require__(576);
-const tr = __importStar(__nccwpck_require__(469));
+const tr = __importStar(__nccwpck_require__(804));
 /**
  * Exec a command.
  * Output will be streamed to the live console.
@@ -709,7 +709,7 @@ exports.getExecOutput = getExecOutput;
 
 /***/ }),
 
-/***/ 469:
+/***/ 804:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -748,8 +748,8 @@ const os = __importStar(__nccwpck_require__(37));
 const events = __importStar(__nccwpck_require__(361));
 const child = __importStar(__nccwpck_require__(81));
 const path = __importStar(__nccwpck_require__(17));
-const io = __importStar(__nccwpck_require__(864));
-const ioUtil = __importStar(__nccwpck_require__(887));
+const io = __importStar(__nccwpck_require__(541));
+const ioUtil = __importStar(__nccwpck_require__(417));
 const timers_1 = __nccwpck_require__(512);
 /* eslint-disable @typescript-eslint/unbound-method */
 const IS_WINDOWS = process.platform === 'win32';
@@ -1334,7 +1334,7 @@ class ExecState extends events.EventEmitter {
 
 /***/ }),
 
-/***/ 421:
+/***/ 560:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -1400,7 +1400,7 @@ exports.PersonalAccessTokenCredentialHandler = PersonalAccessTokenCredentialHand
 
 /***/ }),
 
-/***/ 840:
+/***/ 189:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -1408,7 +1408,7 @@ exports.PersonalAccessTokenCredentialHandler = PersonalAccessTokenCredentialHand
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const http = __nccwpck_require__(685);
 const https = __nccwpck_require__(687);
-const pm = __nccwpck_require__(45);
+const pm = __nccwpck_require__(851);
 let tunnel;
 var HttpCodes;
 (function (HttpCodes) {
@@ -1827,7 +1827,7 @@ class HttpClient {
         if (useProxy) {
             // If using proxy, need tunnel
             if (!tunnel) {
-                tunnel = __nccwpck_require__(265);
+                tunnel = __nccwpck_require__(494);
             }
             const agentOptions = {
                 maxSockets: maxSockets,
@@ -1945,7 +1945,7 @@ exports.HttpClient = HttpClient;
 
 /***/ }),
 
-/***/ 45:
+/***/ 851:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2010,7 +2010,7 @@ exports.checkBypass = checkBypass;
 
 /***/ }),
 
-/***/ 887:
+/***/ 417:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -2194,7 +2194,7 @@ exports.getCmdPath = getCmdPath;
 
 /***/ }),
 
-/***/ 864:
+/***/ 541:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -2233,7 +2233,7 @@ const assert_1 = __nccwpck_require__(491);
 const childProcess = __importStar(__nccwpck_require__(81));
 const path = __importStar(__nccwpck_require__(17));
 const util_1 = __nccwpck_require__(837);
-const ioUtil = __importStar(__nccwpck_require__(887));
+const ioUtil = __importStar(__nccwpck_require__(417));
 const exec = util_1.promisify(childProcess.exec);
 const execFile = util_1.promisify(childProcess.execFile);
 /**
@@ -2542,15 +2542,135 @@ function copyFile(srcFile, destFile, force) {
 
 /***/ }),
 
-/***/ 265:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+/***/ 883:
+/***/ ((module) => {
 
-module.exports = __nccwpck_require__(686);
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ 356:
+/***/ (function(__unused_webpack_module, exports) {
+
+
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+};
+var _ArgumentBuilder_args;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+class ArgumentBuilder {
+    constructor() {
+        _ArgumentBuilder_args.set(this, []);
+    }
+    Append(arg, param) {
+        if (Array.isArray(arg)) {
+            __classPrivateFieldSet(this, _ArgumentBuilder_args, __classPrivateFieldGet(this, _ArgumentBuilder_args, "f").concat(arg), "f");
+        }
+        else {
+            __classPrivateFieldGet(this, _ArgumentBuilder_args, "f").push(arg);
+            if (param != null) {
+                __classPrivateFieldGet(this, _ArgumentBuilder_args, "f").push(param);
+            }
+        }
+    }
+    Count() {
+        return __classPrivateFieldGet(this, _ArgumentBuilder_args, "f").length;
+    }
+    Build() {
+        return __classPrivateFieldGet(this, _ArgumentBuilder_args, "f");
+    }
+    ToString() {
+        return __classPrivateFieldGet(this, _ArgumentBuilder_args, "f").join(' ');
+    }
+}
+exports["default"] = ArgumentBuilder;
+_ArgumentBuilder_args = new WeakMap();
 
 
 /***/ }),
 
-/***/ 686:
+/***/ 925:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require2_) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ArgumentBuilder = void 0;
+var ArgumentBuilder_1 = __nccwpck_require2_(356);
+Object.defineProperty(exports, "ArgumentBuilder", ({ enumerable: true, get: function () { return __importDefault(ArgumentBuilder_1).default; } }));
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __nccwpck_require2_(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		var threw = true;
+/******/ 		try {
+/******/ 			__webpack_modules__[moduleId].call(module.exports, module, module.exports, __nccwpck_require2_);
+/******/ 			threw = false;
+/******/ 		} finally {
+/******/ 			if(threw) delete __webpack_module_cache__[moduleId];
+/******/ 		}
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat */
+/******/ 	
+/******/ 	if (typeof __nccwpck_require2_ !== 'undefined') __nccwpck_require2_.ab = __dirname + "/";
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __nccwpck_require2_(925);
+/******/ 	module.exports = __webpack_exports__;
+/******/ 	
+/******/ })()
+;
+
+/***/ }),
+
+/***/ 494:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+module.exports = __nccwpck_require__(955);
+
+
+/***/ }),
+
+/***/ 955:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -2822,7 +2942,7 @@ exports.debug = debug; // for test
 
 /***/ }),
 
-/***/ 116:
+/***/ 583:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -2850,74 +2970,47 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const core = __importStar(__nccwpck_require__(127));
-const exec = __importStar(__nccwpck_require__(49));
-const coreCommand = __importStar(__nccwpck_require__(604));
+const core = __importStar(__nccwpck_require__(21));
+const exec = __importStar(__nccwpck_require__(272));
+const coreCommand = __importStar(__nccwpck_require__(403));
+const argument_builder_1 = __nccwpck_require__(883);
 const IsPost = !!process.env['STATE_POST'];
 function AllowPostProcess() {
     coreCommand.issueCommand('save-state', { name: 'POST' }, 'true');
 }
-function Run() {
-    return __awaiter(this, void 0, void 0, function* () {
-        core.notice('Run');
-        try {
-            const username = core.getInput('username');
-            const password = core.getInput('password');
-            const name = core.getInput('name');
-            const source = core.getInput('source');
-            if (username === '') {
-                throw new Error('username is null');
-            }
-            if (password === '') {
-                throw new Error('password is null');
-            }
-            if (name === '') {
-                throw new Error('name is null');
-            }
-            if (source === '') {
-                throw new Error('source is null');
-            }
-            coreCommand.issueCommand('save-state', { name: 'NAME' }, name);
-            const args = [
-                'nuget',
-                'add',
-                'source',
-                '--username', username,
-                '--password', password,
-                '--store-password-in-clear-text',
-                '--name', `"${name}"`, source
-            ];
-            yield exec.exec('dotnet', args);
-        }
-        catch (ex) {
-            core.setFailed(ex.message);
-        }
-    });
+async function Run() {
+    core.notice('Run');
+    try {
+        const name = core.getInput('name');
+        coreCommand.issueCommand('save-state', { name: 'NAME' }, name);
+        const builder = new argument_builder_1.ArgumentBuilder();
+        builder.Append('nuget');
+        builder.Append('add', 'source');
+        builder.Append('--username', core.getInput('username'));
+        builder.Append('--password', core.getInput('password'));
+        builder.Append('--store-password-in-clear-text');
+        builder.Append('--name', `"${name}"`);
+        builder.Append(core.getInput('source'));
+        await exec.exec('dotnet', builder.Build());
+    }
+    catch (ex) {
+        core.setFailed(ex.message);
+    }
 }
-function Cleanup() {
-    return __awaiter(this, void 0, void 0, function* () {
-        core.notice('Cleanup');
-        try {
-            const name = process.env['STATE_NAME'] || '';
-            if (name === '') {
-                throw new Error('NuGet Source is empty.');
-            }
-            yield exec.exec('dotnet', ['nuget', 'remove', 'source', `"${name}"`]);
-        }
-        catch (ex) {
-            core.setFailed(ex.message);
-        }
-    });
+async function Cleanup() {
+    core.notice('Cleanup');
+    try {
+        const name = process.env['STATE_NAME'] || '';
+        const builder = new argument_builder_1.ArgumentBuilder();
+        builder.Append('nuget');
+        builder.Append('remove', 'source');
+        builder.Append('source', `"${name}"`);
+        await exec.exec('dotnet', builder.Build());
+    }
+    catch (ex) {
+        core.setFailed(ex.message);
+    }
 }
 if (!!IsPost) {
     Cleanup();
@@ -3076,7 +3169,7 @@ module.exports = require("util");
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __nccwpck_require__(116);
+/******/ 	var __webpack_exports__ = __nccwpck_require__(583);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()

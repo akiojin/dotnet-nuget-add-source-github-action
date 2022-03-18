@@ -1,26 +1,22 @@
-name: '.NET NuGet add source GitHub action'
+name: 'dotnet-nuget-add-source-github-action'
 description: '.NET NuGet add source GitHub action'
 inputs:
   username:
-    description: ''
+    description: 'GitHub username'
     required: true
-    default: ''
   password:
-    description: ''
+    description: 'A personal access token with access to the GitHub repository.'
     required: true
-    default: ''
   name:
-    description: ''
+    description: 'NuGet Package Source Name'
     required: true
-    default: ''
   source:
-    description: ''
+    description: 'NuGet Package URL'
     required: true
-    default: ''
 runs:
   using: 'node16'
   main: 'dist/index.js'
   post: 'dist/index.js'
 branding:
-  icon: "upload-cloud"
+  icon: "box"
   color: "orange"
