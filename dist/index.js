@@ -3005,7 +3005,7 @@ async function Cleanup() {
         const builder = new argument_builder_1.ArgumentBuilder();
         builder.Append('nuget');
         builder.Append('remove', 'source');
-        builder.Append('source', `"${name}"`);
+        builder.Append(`"${name}"`);
         await exec.exec('dotnet', builder.Build());
     }
     catch (ex) {
