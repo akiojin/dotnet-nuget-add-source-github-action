@@ -3148,12 +3148,6 @@ async function Run() {
     try {
         const name = core.getInput('name');
         const sources = await DotNet.ListSource();
-        core.startGroup('List Sources');
-        core.info('Sources:');
-        for (const source of sources) {
-            core.info(`- "${source}"`);
-        }
-        core.endGroup();
         if (sources.indexOf(name) === -1) {
             await DotNet.AddSource(name, core.getInput('source'), core.getInput('username'), core.getInput('password'));
         }
@@ -3167,14 +3161,8 @@ async function Cleanup() {
     try {
         const name = PackageNameCache.Get();
         if (name !== '') {
-            core.startGroup('List Sources');
-            core.info('Sources:');
-            for (const source of await DotNet.ListSource()) {
-                core.info(`- "${source}"`);
-            }
-            core.endGroup();
             core.info(`Cleanup package "${name}"`);
-            //			await DotNet.RemoveSource(name)
+            await DotNet.RemoveSource(name);
         }
     }
     catch (ex) {
