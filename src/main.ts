@@ -127,7 +127,7 @@ async function Cleanup()
 			core.endGroup()
 
 			core.info(`Cleanup package "${name}"`)
-			await DotNet.RemoveSource(name)
+//			await DotNet.RemoveSource(name)
 		}
 	} catch (ex: any) {
 		core.setFailed(ex.message)
