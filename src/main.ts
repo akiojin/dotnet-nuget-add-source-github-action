@@ -96,6 +96,11 @@ async function Run(): Promise<void>
 		const name = core.getInput('name')
 		const sources = await DotNet.ListSource()
 
+		for (const source of sources) {
+			core.info('Sources:')
+			core.info(`${source}`)
+		}
+
 		if (sources.indexOf(name) === -1) {
 			await DotNet.AddSource(name, core.getInput('source'), core.getInput('username'), core.getInput('password'))
 		}
