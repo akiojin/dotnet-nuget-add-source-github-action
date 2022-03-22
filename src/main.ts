@@ -96,10 +96,10 @@ async function Run(): Promise<void>
 		const name = core.getInput('name')
 		const sources = await DotNet.ListSource()
 
-		core.startGroup('Sources')
+		core.startGroup('List Sources')
 		core.info('Sources:')
 		for (const source of sources) {
-			core.info(`"- ${source}"`)
+			core.info(`- "${source}"`)
 		}
 		core.endGroup()
 
@@ -119,6 +119,13 @@ async function Cleanup()
 		const name = PackageNameCache.Get()
 
 		if (name !== '') {
+			core.startGroup('List Sources')
+			core.info('Sources:')
+			for (const source of await DotNet.ListSource()) {
+				core.info(`- "${source}"`)
+			}
+			core.endGroup()
+
 			core.info(`Cleanup package "${name}"`)
 			await DotNet.RemoveSource(name)
 		}
