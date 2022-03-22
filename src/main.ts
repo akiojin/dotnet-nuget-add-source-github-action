@@ -43,7 +43,7 @@ class DotNet
 		return sources;
 	}
 
-	static async AddSource(name: string, source: string, username: string, password: string): Promise<number>
+	static AddSource(name: string, source: string, username: string, password: string): Promise<number>
 	{
 		const builder = new ArgumentBuilder()
 			.Append('nuget')
@@ -58,7 +58,7 @@ class DotNet
 		return exec.exec('dotnet', builder.Build())
 	}
 
-	static async RemoveSource(name: string): Promise<number>
+	static RemoveSource(name: string): Promise<number>
 	{
 		const builder = new ArgumentBuilder()
 			.Append('nuget')
@@ -68,7 +68,7 @@ class DotNet
 		return exec.exec('dotnet', builder.Build())
 	}
 
-	static async Build(output: string, configuration: string): Promise<number>
+	static Build(output: string, configuration: string): Promise<number>
 	{
 		const builder = new ArgumentBuilder()
 			.Append('build')
@@ -78,7 +78,7 @@ class DotNet
 		return exec.exec('dotnet', builder.Build())
 	}
 
-	static async Publish(output: string, source: string, apiKey: string): Promise<number>
+	static Publish(output: string, source: string, apiKey: string): Promise<number>
 	{
 		const builder = new ArgumentBuilder()
 			.Append('nuget', 'push')
@@ -96,10 +96,12 @@ async function Run(): Promise<void>
 		const name = core.getInput('name')
 		const sources = await DotNet.ListSource()
 
+		core.startGroup('Sources')
+		core.info('Sources:')
 		for (const source of sources) {
-			core.info('Sources:')
-			core.info(`${source}`)
+			core.info(`"${source}"`)
 		}
+		core.endGroup()
 
 		if (sources.indexOf(name) === -1) {
 			await DotNet.AddSource(name, core.getInput('source'), core.getInput('username'), core.getInput('password'))
@@ -114,8 +116,12 @@ async function Run(): Promise<void>
 async function Cleanup()
 {
 	try {
-		if (PackageNameCache.Get() !== '') {
-			await DotNet.RemoveSource(PackageNameCache.Get())
+		const name = PackageNameCache.Get()
+		if (name !== '') {
+			const sources = await DotNet.ListSource()
+			if (sources.indexOf(name) !== -1) {
+				await DotNet.RemoveSource(name)
+			}
 		}
 	} catch (ex: any) {
 		core.setFailed(ex.message)

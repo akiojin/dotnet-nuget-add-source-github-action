@@ -3109,7 +3109,7 @@ class DotNet {
         }
         return sources;
     }
-    static async AddSource(name, source, username, password) {
+    static AddSource(name, source, username, password) {
         const builder = new argument_builder_1.ArgumentBuilder()
             .Append('nuget')
             .Append('add')
@@ -3121,21 +3121,21 @@ class DotNet {
             .Append(source);
         return exec.exec('dotnet', builder.Build());
     }
-    static async RemoveSource(name) {
+    static RemoveSource(name) {
         const builder = new argument_builder_1.ArgumentBuilder()
             .Append('nuget')
             .Append('remove')
             .Append('source', `"${name}"`);
         return exec.exec('dotnet', builder.Build());
     }
-    static async Build(output, configuration) {
+    static Build(output, configuration) {
         const builder = new argument_builder_1.ArgumentBuilder()
             .Append('build')
             .Append('--configuration', configuration)
             .Append('--output', output);
         return exec.exec('dotnet', builder.Build());
     }
-    static async Publish(output, source, apiKey) {
+    static Publish(output, source, apiKey) {
         const builder = new argument_builder_1.ArgumentBuilder()
             .Append('nuget', 'push')
             .Append(`${output}/*.nupkg`)
@@ -3148,10 +3148,12 @@ async function Run() {
     try {
         const name = core.getInput('name');
         const sources = await DotNet.ListSource();
+        core.startGroup('Sources');
+        core.info('Sources:');
         for (const source of sources) {
-            core.info('Sources:');
-            core.info(`${source}`);
+            core.info(`"${source}"`);
         }
+        core.endGroup();
         if (sources.indexOf(name) === -1) {
             await DotNet.AddSource(name, core.getInput('source'), core.getInput('username'), core.getInput('password'));
         }
@@ -3163,8 +3165,12 @@ async function Run() {
 }
 async function Cleanup() {
     try {
-        if (PackageNameCache.Get() !== '') {
-            await DotNet.RemoveSource(PackageNameCache.Get());
+        const name = PackageNameCache.Get();
+        if (name !== '') {
+            const sources = await DotNet.ListSource();
+            if (sources.indexOf(name) !== -1) {
+                await DotNet.RemoveSource(name);
+            }
         }
     }
     catch (ex) {
