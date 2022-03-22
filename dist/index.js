@@ -3151,7 +3151,7 @@ async function Run() {
         core.startGroup('Sources');
         core.info('Sources:');
         for (const source of sources) {
-            core.info(`"${source}"`);
+            core.info(`"- ${source}"`);
         }
         core.endGroup();
         if (sources.indexOf(name) === -1) {
@@ -3167,10 +3167,8 @@ async function Cleanup() {
     try {
         const name = PackageNameCache.Get();
         if (name !== '') {
-            const sources = await DotNet.ListSource();
-            if (sources.indexOf(name) !== -1) {
-                await DotNet.RemoveSource(name);
-            }
+            core.info(`Cleanup package "${name}"`);
+            await DotNet.RemoveSource(name);
         }
     }
     catch (ex) {
