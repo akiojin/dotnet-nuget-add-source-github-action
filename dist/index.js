@@ -3147,7 +3147,10 @@ class DotNet {
 async function Run() {
     try {
         const name = core.getInput('name');
-        await DotNet.AddSource(name, core.getInput('source'), core.getInput('username'), core.getInput('password'));
+        const sources = await DotNet.ListSource();
+        if (sources.indexOf(name) === -1) {
+            await DotNet.AddSource(name, core.getInput('source'), core.getInput('username'), core.getInput('password'));
+        }
         PackageNameCache.Set(name);
     }
     catch (ex) {
