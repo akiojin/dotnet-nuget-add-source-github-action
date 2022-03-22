@@ -8,6 +8,41 @@ const PackageNameCache = new StringStateCache('PACKAGE_NAME')
 
 class DotNet
 {
+	static async ListSource(): Promise<string[]>
+	{
+		const builder = new ArgumentBuilder()
+			.Append('nuget')
+			.Append('list')
+			.Append('source')
+
+		let output = ''
+		const options: exec.ExecOptions = {}
+		options.listeners = {
+			stdout: (data: Buffer) => {
+				output += data.toString()
+			}
+		}
+
+		try {
+			await exec.exec('dotnet', builder.Build(), options)
+		} catch (ex: any) {
+			return []
+		}
+
+		let sources: string[] = []
+
+		if (output !== '') {
+			const reg = /^.*\d.[ ]*(.*)[ ].*$/gm
+			let match
+
+			while ((match = reg.exec(output)) !== null) {
+				sources.push(match[1])
+			}
+		}
+
+		return sources;
+	}
+
 	static async AddSource(name: string, source: string, username: string, password: string): Promise<number>
 	{
 		const builder = new ArgumentBuilder()
@@ -70,7 +105,9 @@ async function Run(): Promise<void>
 async function Cleanup()
 {
 	try {
-		await DotNet.RemoveSource(PackageNameCache.Get())
+		if (PackageNameCache.Get() !== '') {
+			await DotNet.RemoveSource(PackageNameCache.Get())
+		}
 	} catch (ex: any) {
 		core.setFailed(ex.message)
 	}
