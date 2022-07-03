@@ -29,7 +29,7 @@
   "homepage": "https://github.com/akiojin/dotnet-nuget-add-source-github-action#readme",
   "dependencies": {
     "@actions/core": "^1.6.0",
-    "@actions/exec": "^1.1.0",
+    "@actions/exec": "^1.1.1",
     "@akiojin/argument-builder": "^1.0.0"
   },
   "devDependencies": {
