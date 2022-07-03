@@ -17,6 +17,7 @@ runs:
   using: 'node16'
   main: 'dist/index.js'
   post: 'dist/index.js'
+  post-if: success()
 branding:
   icon: "box"
   color: "orange"
