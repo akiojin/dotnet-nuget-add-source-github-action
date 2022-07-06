@@ -106,9 +106,8 @@ async function Run(): Promise<void>
 			core.info('Already registered.')
 		} else {
 			await DotNet.AddSource(name, core.getInput('source'), core.getInput('username'), core.getInput('password'))
+			PackageNameCache.Set(name)
 		}
-
-		PackageNameCache.Set(name)
 	} catch (ex: any) {
 		core.setFailed(ex.message);
 	}

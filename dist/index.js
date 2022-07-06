@@ -3622,8 +3622,8 @@ async function Run() {
         }
         else {
             await DotNet.AddSource(name, core.getInput('source'), core.getInput('username'), core.getInput('password'));
+            PackageNameCache.Set(name);
         }
-        PackageNameCache.Set(name);
     }
     catch (ex) {
         core.setFailed(ex.message);
