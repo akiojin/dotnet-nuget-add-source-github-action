@@ -14,6 +14,7 @@ class DotNet
 			.Append('nuget')
 			.Append('list')
 			.Append('source')
+			.Append('--format', 'short')
 
 		let output = ''
 		const options: exec.ExecOptions = {}
@@ -32,7 +33,7 @@ class DotNet
 		let sources: string[] = []
 
 		if (output !== '') {
-			const reg = /^.*\d.[ ]*(.*)[ ].*$/gm
+			const reg = /^E[ ](.*)$/gm
 			let match
 
 			while ((match = reg.exec(output)) !== null) {
@@ -96,7 +97,14 @@ async function Run(): Promise<void>
 		const name = core.getInput('name')
 		const sources = await DotNet.ListSource()
 
-		if (sources.indexOf(name) === -1) {
+		core.info(`Sources(${sources.length}):`)
+		sources.forEach(x => {
+			core.info(x)
+		})
+
+		if (sources.indexOf(name) !== -1) {
+			core.info('Already registered.')
+		} else {
 			await DotNet.AddSource(name, core.getInput('source'), core.getInput('username'), core.getInput('password'))
 		}
 
