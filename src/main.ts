@@ -102,7 +102,7 @@ async function Run(): Promise<void>
 			core.info(x)
 		})
 
-		if (sources.indexOf(name) !== -1) {
+		if (sources.indexOf(core.getInput('source')) !== -1) {
 			core.info('Already registered.')
 		} else {
 			await DotNet.AddSource(name, core.getInput('source'), core.getInput('username'), core.getInput('password'))

@@ -3617,7 +3617,7 @@ async function Run() {
         sources.forEach(x => {
             core.info(x);
         });
-        if (sources.indexOf(name) !== -1) {
+        if (sources.indexOf(core.getInput('source')) !== -1) {
             core.info('Already registered.');
         }
         else {
