@@ -33,7 +33,7 @@ class DotNet
 		let sources: string[] = []
 
 		if (output !== '') {
-			const reg = /^E[ ](.*)$/gm
+			const reg = /^[EM]*[ ](.*)$/gm
 			let match
 
 			while ((match = reg.exec(output)) !== null) {
