@@ -17,10 +17,11 @@ class DotNet
 			.Append('--format', 'short')
 
 		let output = ''
-		const options: exec.ExecOptions = {}
-		options.listeners = {
-			stdout: (data: Buffer) => {
-				output += data.toString()
+		const options: exec.ExecOptions = {
+			listeners: {
+				stdout: (data: Buffer) => {
+					output += data.toString()
+				}
 			}
 		}
 
