@@ -1,7 +1,7 @@
 {
   "name": "dotnet-nuget-add-source-github-action",
   "version": "1.0.19",
-  "private": true,
+  "private": false,
   "description": "",
   "main": "dist/index.js",
   "directories": {
