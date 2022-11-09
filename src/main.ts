@@ -1,10 +1,10 @@
 import * as core from '@actions/core'
 import * as exec from '@actions/exec'
 import { ArgumentBuilder } from '@akiojin/argument-builder'
-import { BooleanStateCache, StringStateCache } from './StateHelper'
+import { BooleanEnvironment, StringEnvironment } from './Environment'
 
-const IsPostProcess = new BooleanStateCache('IS_POST_PROCESS')
-const PackageNameCache = new StringStateCache('PACKAGE_NAME')
+const IsPostProcess = new BooleanEnvironment('IS_POST_PROCESS')
+const PackageNameCache = new StringEnvironment('PACKAGE_NAME')
 
 class DotNet
 {
