@@ -1,4 +1,4 @@
-name: 'dotnet-nuget-add-source-github-action'
+name: '.NET NuGet add source'
 description: '.NET NuGet add source GitHub action'
 inputs:
   username:
