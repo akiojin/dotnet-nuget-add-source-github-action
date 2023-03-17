@@ -1,9 +1,6 @@
 name: Build
 
-on:
-  push:
-    branches:
-      - main
+on: push
 
 jobs:
   Build:
@@ -12,29 +9,23 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-
-      - run: npm install
-
-      - name: ncc build
-        run: |
-          npx @vercel/ncc build src/main.ts
+      - run: npm run build
 
   Test:
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.OS }}
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
+        OS: [ ubuntu-latest, macos-latest, windows-latest ]
+        VERSION: [ 6.x, 7.x ]
 
     steps:
       - uses: actions/checkout@v3
-
       - uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: ${{ matrix.VERSION }}
 
       - uses: ./
         with:
