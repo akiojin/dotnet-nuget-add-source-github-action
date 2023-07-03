@@ -57,11 +57,11 @@ class DotNet
 			.Append('nuget')
 			.Append('add')
 			.Append('source')
+			.Append(source)
 			.Append('--username', username)
 			.Append('--password', password)
 			.Append('--name', `"${name}"`)
 			.Append('--store-password-in-clear-text')
-			.Append(source)
 
 		return exec.exec('dotnet', builder.Build())
 	}
@@ -96,7 +96,7 @@ class DotNet
 		assert(!!output)
 		assert(!!source)
 		assert(!!apiKey)
-		
+
 		const builder = new ArgumentBuilder()
 			.Append('nuget', 'push')
 			.Append(`${output}/*.nupkg`)

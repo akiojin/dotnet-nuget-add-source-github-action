@@ -4248,11 +4248,11 @@ class DotNet {
             .Append('nuget')
             .Append('add')
             .Append('source')
+            .Append(source)
             .Append('--username', username)
             .Append('--password', password)
             .Append('--name', `"${name}"`)
-            .Append('--store-password-in-clear-text')
-            .Append(source);
+            .Append('--store-password-in-clear-text');
         return exec.exec('dotnet', builder.Build());
     }
     static RemoveSource(name) {
