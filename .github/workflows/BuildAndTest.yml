@@ -29,7 +29,7 @@ jobs:
 
       - uses: ./
         with:
-          username: ${{ secrets.GIT_CREDENTIAL_USERNAME }}
-          password: ${{ secrets.GIT_CREDENTIAL_PACKAGE_PASSWORD }}
+          username: akiojin
+          password: Test012345
           name: "GitHub Packages"
-          source: ${{ secrets.GIT_CREDENTIAL_PACKAGE_SOURCE }}
+          source: https://nuget.pkg.github.com/akiojin/index.json
