@@ -1,5 +1,6 @@
 import * as core from '@actions/core'
 import * as exec from '@actions/exec'
+import assert from 'assert'
 import { ArgumentBuilder } from '@akiojin/argument-builder'
 import { BooleanEnvironment, StringEnvironment } from './Environment'
 
@@ -47,14 +48,19 @@ class DotNet
 
 	static AddSource(name: string, source: string, username: string, password: string): Promise<number>
 	{
+		assert(!!name)
+		assert(!!source)
+		assert(!!username)
+		assert(!!password)
+
 		const builder = new ArgumentBuilder()
 			.Append('nuget')
 			.Append('add')
 			.Append('source')
 			.Append('--username', username)
 			.Append('--password', password)
-			.Append('--store-password-in-clear-text')
 			.Append('--name', `"${name}"`)
+			.Append('--store-password-in-clear-text')
 			.Append(source)
 
 		return exec.exec('dotnet', builder.Build())
@@ -62,6 +68,8 @@ class DotNet
 
 	static RemoveSource(name: string): Promise<number>
 	{
+		assert(!!name)
+
 		const builder = new ArgumentBuilder()
 			.Append('nuget')
 			.Append('remove')
@@ -72,6 +80,9 @@ class DotNet
 
 	static Build(output: string, configuration: string): Promise<number>
 	{
+		assert(!!output)
+		assert(!!configuration)
+
 		const builder = new ArgumentBuilder()
 			.Append('build')
 			.Append('--configuration', configuration)
@@ -82,6 +93,10 @@ class DotNet
 
 	static Publish(output: string, source: string, apiKey: string): Promise<number>
 	{
+		assert(!!output)
+		assert(!!source)
+		assert(!!apiKey)
+		
 		const builder = new ArgumentBuilder()
 			.Append('nuget', 'push')
 			.Append(`${output}/*.nupkg`)

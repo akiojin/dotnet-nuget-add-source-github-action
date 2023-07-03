@@ -4197,9 +4197,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(186));
 const exec = __importStar(__nccwpck_require__(514));
+const assert_1 = __importDefault(__nccwpck_require__(491));
 const argument_builder_1 = __nccwpck_require__(782);
 const Environment_1 = __nccwpck_require__(505);
 const IsPostProcess = new Environment_1.BooleanEnvironment('IS_POST_PROCESS');
@@ -4236,18 +4240,23 @@ class DotNet {
         return sources;
     }
     static AddSource(name, source, username, password) {
+        (0, assert_1.default)(!!name);
+        (0, assert_1.default)(!!source);
+        (0, assert_1.default)(!!username);
+        (0, assert_1.default)(!!password);
         const builder = new argument_builder_1.ArgumentBuilder()
             .Append('nuget')
             .Append('add')
             .Append('source')
             .Append('--username', username)
             .Append('--password', password)
-            .Append('--store-password-in-clear-text')
             .Append('--name', `"${name}"`)
+            .Append('--store-password-in-clear-text')
             .Append(source);
         return exec.exec('dotnet', builder.Build());
     }
     static RemoveSource(name) {
+        (0, assert_1.default)(!!name);
         const builder = new argument_builder_1.ArgumentBuilder()
             .Append('nuget')
             .Append('remove')
@@ -4255,6 +4264,8 @@ class DotNet {
         return exec.exec('dotnet', builder.Build());
     }
     static Build(output, configuration) {
+        (0, assert_1.default)(!!output);
+        (0, assert_1.default)(!!configuration);
         const builder = new argument_builder_1.ArgumentBuilder()
             .Append('build')
             .Append('--configuration', configuration)
@@ -4262,6 +4273,9 @@ class DotNet {
         return exec.exec('dotnet', builder.Build());
     }
     static Publish(output, source, apiKey) {
+        (0, assert_1.default)(!!output);
+        (0, assert_1.default)(!!source);
+        (0, assert_1.default)(!!apiKey);
         const builder = new argument_builder_1.ArgumentBuilder()
             .Append('nuget', 'push')
             .Append(`${output}/*.nupkg`)
