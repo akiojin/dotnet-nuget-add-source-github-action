@@ -14,7 +14,7 @@ inputs:
     description: 'NuGet Package URL'
     required: true
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
   post: 'dist/index.js'
 branding:
