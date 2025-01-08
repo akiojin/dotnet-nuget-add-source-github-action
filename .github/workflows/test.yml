@@ -11,7 +11,7 @@ jobs:
         VERSION: [ 6.x, 7.x, 8.x, 9.x ]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ matrix.VERSION }}
